@@ -8,21 +8,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-	<link rel="stylesheet" type="text/css" href="css/owl.transitions.css"/>
-	<link rel="stylesheet" type="text/css" href="css/owl.carousel.css"/>
 	<link rel="stylesheet" type="text/css" href="css/animate.css"/>
 	<link rel="stylesheet" type="text/css" href="css/main.css"/>
 
 
 	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/ajaxchimp.js"></script>
-
-	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-	<script type="text/javascript" src="js/wow.js"></script>
-	<script type="text/javascript" src="js/parallax.js"></script>
-	<script type="text/javascript" src="js/nicescroll.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
-	<script type="text/javascript" src="js/scrollTo.js"></script>
+	<script type="text/javascript" src="js/wow.js" defer></script>
+	<script type="text/javascript" src="js/parallax.js" defer></script>
+	<script type="text/javascript" src="js/nicescroll.js" async></script>
+	<script type="text/javascript" src="js/scrollTo.js" async></script>
+  <script type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
 
@@ -185,7 +180,7 @@
 
 		</div>
 	</section>
-	<!--  And App Features Section  -->
+	<!--  End App Features Section  -->
 
 	<!--  Testimonials Section  -->
 	<section class="testimonials animated wow fadeIn" id="testimonials" data-wow-duration="2s">
@@ -260,5 +255,34 @@
 	</footer>
 	<!--  End Footer Section  -->
 
+  <script type="text/javascript">
+    const loadFile = (src, r, t) => {
+      if (!document.loadFile) {
+        var newElem;
+        if (t === 'text/css') {
+          newElem = document.createElement('link');
+        }
+        else {
+          newElem = document.createElement('script');
+        }
+        newElem.href = src;
+        newElem.rel = r
+        newElem.type = t;
+        document.getElementsByTagName('head')[0].appendChild(newElem);
+      }
+      else {
+        document.loadFile(src);
+      }
+    }
+    // All of the objects are in the DOM, and all the images, scripts, links have finished loading.
+    window.onload = function () {
+      console.log('window done!')
+      loadFile('css/secondary.css', 'stylesheet', 'text/css');
+      loadFile('css/owl.transitions.css', 'stylesheet', 'text/css');
+      loadFile('css/owl.carousel.css', 'stylesheet', 'text/css');
+      loadFile('js/owl.carousel.min.js', 'owl-car', 'text/javascript');
+      loadFile('js/ajaxchimp.js', 'email-script', 'text/javascript');
+    };
+  </script>
 </body>
 </html>
