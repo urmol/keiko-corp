@@ -261,11 +261,12 @@
         var newElem;
         if (t === 'text/css') {
           newElem = document.createElement('link');
+          newElem.href = src;
         }
         else {
           newElem = document.createElement('script');
+          newElem.src = src;
         }
-        newElem.href = src;
         newElem.rel = r
         newElem.type = t;
         document.getElementsByTagName('head')[0].appendChild(newElem);
